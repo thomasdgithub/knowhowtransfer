@@ -1,10 +1,10 @@
-package de.bitaix.knowhowtransfer;
+package de.bitaix.knowhowtransfer.streams;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import de.bitaix.knowhowtransfer.TestData.Person;
+import de.bitaix.knowhowtransfer.streams.TestData.Person;
 
 public class ParallelStreamExamples {
 	

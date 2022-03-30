@@ -1,8 +1,8 @@
-package de.bitaix.knowhowtransfer;
+package de.bitaix.knowhowtransfer.streams;
 
 import java.util.List;
 
-import de.bitaix.knowhowtransfer.TestData.Person;
+import de.bitaix.knowhowtransfer.streams.TestData.Person;
 
 public class SimpleStreamsExamples {
 

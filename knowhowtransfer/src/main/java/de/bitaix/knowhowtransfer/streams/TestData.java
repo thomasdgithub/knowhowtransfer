@@ -1,4 +1,4 @@
-package de.bitaix.knowhowtransfer;
+package de.bitaix.knowhowtransfer.streams;
 
 import java.util.Arrays;
 import java.util.List;

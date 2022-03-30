@@ -1,4 +1,4 @@
-package de.bitaix.knowhowtransfer;
+package de.bitaix.knowhowtransfer.streams;
 
 import java.time.LocalDate;
 import java.util.AbstractMap.SimpleEntry;
@@ -8,7 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import de.bitaix.knowhowtransfer.TestData.Person;
+
+import de.bitaix.knowhowtransfer.streams.TestData.Person;
 
 public class ComplexStreamExamples {
 	
