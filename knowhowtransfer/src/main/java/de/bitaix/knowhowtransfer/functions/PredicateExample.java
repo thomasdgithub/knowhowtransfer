@@ -1,4 +1,4 @@
-package de.bitaix.knowhowtransfer.predicate;
+package de.bitaix.knowhowtransfer.functions;
 
 import java.util.Optional;
 import java.util.function.Predicate;
