@@ -10,11 +10,8 @@ import de.bitaix.knowhowtransfer.streams.TestData.Person;
 
 public class PredicateExample {
 	
-	
 	@Test
 	public String example() {
-		
-		
 		Person person = TestData.getPersonOptional(1).get();
 		
 		if(person == null) {
@@ -28,58 +25,43 @@ public class PredicateExample {
 		if(person.getFirstName().equals("Hein")) {
 			return "This is Hein Blöd"; 
 		}
-		
 		return null;
-		
 	}
-	
-	
+		
 	@Test
-	public void exampleWithPredicate2() {
-		
-		Optional<Person> personOptional = TestData.getPersonOptional(1);
-		
-		Optional<String> luke = personOptional.filter(p -> p.getFirstName().equals("Luke"))
-			.map(p -> "This is Luke");
-
-		Optional<String> hein = personOptional.filter(p -> p.getFirstName().equals("Hein"))
-				.map(p -> "This is Luke");
-		
-		System.out.println(luke.or(() -> hein).orElse(""));
-	}
-	
-	
-	
-	
-	@Test
-	public void exampleWithPredicate() {
-		
-		
+	public void exampleWithPredicateUsingAHelperMethod() {
 		Person person = TestData.getPersonOptional(1).get();
 		
+		Optional<String> luke = check( firstName -> firstName.equals("Luke"), person.getFirstName(), "This is Luke Skywalker");
+		Optional<String> hein = check( firstName -> firstName.equals("Hein"), person.getFirstName(), "This is Hein Blöd");
 		
-		Optional<String> check1 = check( firstName -> firstName.equals("Luke"), person.getFirstName(), "This is Luke");
-		Optional<String> check2 = check( firstName -> firstName.equals("Hein"), person.getFirstName(), "This is Hein");
-		
-		System.out.println(check1.or(() -> check2).orElseThrow(IllegalArgumentException::new));
+		System.out.println(
+				luke.or(() -> hein)
+				.orElseThrow(IllegalArgumentException::new));
 	}
 	
-
-	
-	
-	
-	
-
 	private Optional<String> check(Predicate<String> predicate, String firstName, String result){
-		
 		if(predicate.test(firstName)) {
 			return Optional.ofNullable(result);
 		}
-		
 		return Optional.empty();
-			
 	}
-	
-	
 
+	@Test
+	public void exampleWithPredicateUsingFilter() {
+		
+		Optional<Person> personOptional = TestData.getPersonOptional(2);
+		
+		Optional<String> luke = personOptional
+				.filter(p -> p.getFirstName().equals("Luke"))
+			.map(p -> "This is Luke Skywalker");
+
+		Optional<String> hein = personOptional
+				.filter(p -> p.getFirstName().equals("Hein"))
+			.map(p -> "This is Hein Blöd");
+		
+		System.out.println(
+				luke.or(() -> hein)
+				.orElse(""));
+	}
 }
